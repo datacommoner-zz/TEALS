@@ -12,19 +12,16 @@ OAUTH_TOKEN_SECRET = '<Put Access token secret Here>'
 class listener(StreamListener):
 
 	def on_data(self, data):
-		try:
-			print data
+
+			print (data)
 			saveFile = open('tweets.txt', 'a')
 			saveFile.write(data)
 			saveFile.write('\n')
 			saveFile.close()
 			return True
-		except BaseException, e:
-			print 'failed ondata,',str(e)
-			time.sleep(5)
 
 	def on_error(self, status):
-		print status
+		print (status)
 
 auth = OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
